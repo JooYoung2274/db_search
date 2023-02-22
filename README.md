@@ -1,1 +1,1 @@
-# db_search
+# db_search_toy project
