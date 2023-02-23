@@ -7,7 +7,9 @@ export class QueryService {
   async test(body) {
     const { query } = body;
     const [users, field] = await this.connectionService.CP.query(
-      'SELECT * FROM USERS',
+      'SELECT COUNT(DISTINCT name) as email FROM USERS',
+      // 'SELECT COUNT(*) as email FROM USERS',
+      // 'SELECT * FROM USERS',
     );
     console.log(users);
     return users;
