@@ -3,10 +3,11 @@ import * as mysql from 'mysql2/promise';
 
 @Injectable()
 export class ConnectionService implements OnModuleInit {
+  public CP: mysql.Pool;
   constructor() {}
 
   async onModuleInit() {
-    const pool = mysql.createPool({
+    this.CP = mysql.createPool({
       host: process.env.DB_HOST,
       user: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
@@ -16,6 +17,5 @@ export class ConnectionService implements OnModuleInit {
     });
 
     console.log(`✅ START CONNECTION 🚀 `);
-    return pool;
   }
 }
